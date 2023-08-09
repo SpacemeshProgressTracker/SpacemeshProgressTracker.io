@@ -44,7 +44,7 @@ body {
   text-align: center;
   margin-top: 5px;
   color: aliceblue;
-  clear: both; /* 다른 floating elements 위/아래에서 올바른 레이아웃을 보장하기 위해 */
+  clear: both;
 }
 
 
