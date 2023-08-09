@@ -43,7 +43,7 @@ function addTick(i) {
     const epochText = document.createElement('div');
     epochText.classList.add('epoch-label');
     const epochStartDate = getEpochStartDate(i / 14); 
-    epochText.innerHTML = `<span class="epoch-round-box">Epoch ${i / 14}</span> (${epochStartDate})`;
+    epochText.innerHTML = `<span class="epoch-round-box">Epoch ${i / 14}</span>   ${epochStartDate} (UTC)`;
     tick.appendChild(epochText);
     } else {
         verticalLine.classList.add('vertical-line');
@@ -249,3 +249,33 @@ function formatDate(date) {
 }
 // Call updateTime every second
 setInterval(updateTime, 1000);
+//////////////////////////////////////////////////////////////////////////////////////////
+
+const timezones = moment.tz.names();
+const dropdown = document.querySelector('.worldTime');
+const timeZoneTimeDiv = document.getElementById('selectedTimeZoneTime');
+let intervalId; // setInterval의 ID를 저장하기 위한 변수
+
+timezones.forEach(zone => {
+    const option = document.createElement('option');
+    option.value = zone;
+    option.textContent = zone;
+    dropdown.appendChild(option);
+});
+
+// 시간대의 현재 시간을 출력하는 함수
+function displayTimeForTimeZone(timezone) {
+    const currentTime = moment().tz(timezone).format('YYYY-MM-DD HH:mm:ss');
+    timeZoneTimeDiv.textContent = currentTime;
+}
+
+// 드롭다운에서 시간대를 선택하면 해당 시간대의 현재 시간을 초 단위로 업데이트
+dropdown.addEventListener('change', function() {
+    clearInterval(intervalId); // 이전의 setInterval을 중단
+    displayTimeForTimeZone(this.value); // 처음 시간을 바로 출력
+    intervalId = setInterval(() => {
+        displayTimeForTimeZone(this.value);
+    }, 1000); // 1초마다 업데이트
+});
+
+/////////////////////////////////////////////

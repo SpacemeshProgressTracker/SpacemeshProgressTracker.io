@@ -24,6 +24,30 @@ body {
   color: aliceblue;
 }
 
+.timeZone {
+  width: 1000px;
+  position: relative;
+}
+
+#utcClock {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.worldTime {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#selectedTimeZoneTime {
+  text-align: center;
+  margin-top: 5px;
+  color: aliceblue;
+  clear: both; /* 다른 floating elements 위/아래에서 올바른 레이아웃을 보장하기 위해 */
+}
+
+
 .container {
   display: flex;
   flex-direction: column;
@@ -104,7 +128,7 @@ body {
 .epoch-label {
   position: absolute;
   top: 86%;
-  left: calc(50% + 66px);
+  left: calc(50% + 78px);
   transform: translateX(-50%) translateY(-50%);
   font-size: 12px;
   font-weight: 600;
