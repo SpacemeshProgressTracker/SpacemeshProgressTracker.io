@@ -272,5 +272,5 @@ dropdown.addEventListener('change', function() {
     displayTimeForTimeZone(this.value);
     intervalId = setInterval(() => {
         displayTimeForTimeZone(this.value);
-    }, 1000); // 1초마다 업데이트
+    }, 1000);
 });
