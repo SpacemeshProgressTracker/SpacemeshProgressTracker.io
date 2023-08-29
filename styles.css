@@ -25,6 +25,11 @@ body {
   align-items: center;
 }
 
+.update {
+  color:white;
+  font-size:21px;
+}
+
 #utcClock {
   flex: 1;
   font-size: 22px;
